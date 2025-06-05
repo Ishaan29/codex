@@ -400,6 +400,11 @@ impl ChatWidget<'_> {
             tracing::error!("failed to submit op: {e}");
         }
     }
+
+    pub(crate) fn show_help_modal(&mut self) {
+        self.bottom_pane.show_help_modal();
+    }
+
 }
 
 impl WidgetRef for &ChatWidget<'_> {

@@ -232,10 +232,15 @@ impl<'a> App<'a> {
                         if let Err(e) = mouse_capture.toggle() {
                             tracing::error!("Failed to toggle mouse mode: {e}");
                         }
-                    }
+                    },
                     SlashCommand::Quit => {
                         break;
-                    }
+                    },
+                    SlashCommand::Help => {
+                        if let AppState::Chat { widget } = &mut self.app_state {
+                            widget.show_help_modal();
+                        }
+                    }  
                 },
             }
         }

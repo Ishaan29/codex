@@ -17,12 +17,14 @@ mod chat_composer;
 mod chat_composer_history;
 mod command_popup;
 mod status_indicator_view;
+mod help_modal_view;
 
 pub(crate) use chat_composer::ChatComposer;
 pub(crate) use chat_composer::InputResult;
 
 use approval_modal_view::ApprovalModalView;
 use status_indicator_view::StatusIndicatorView;
+use help_modal_view::HelpModalView;
 
 /// Pane displayed in the lower half of the chat UI.
 pub(crate) struct BottomPane<'a> {
@@ -52,6 +54,10 @@ impl BottomPane<'_> {
             has_input_focus: params.has_input_focus,
             is_task_running: false,
         }
+    }
+    pub fn show_help_modal(&mut self) {
+        self.active_view = Some(Box::new(HelpModalView::new()));
+        self.request_redraw();
     }
 
     /// Forward a key event to the active view or the composer.

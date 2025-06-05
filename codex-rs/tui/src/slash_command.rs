@@ -15,6 +15,7 @@ pub enum SlashCommand {
     Clear,
     ToggleMouseMode,
     Quit,
+    Help,
 }
 
 impl SlashCommand {
@@ -26,6 +27,7 @@ impl SlashCommand {
                 "Toggle mouse mode (enable for scrolling, disable for text selection)"
             }
             SlashCommand::Quit => "Exit the application.",
+            SlashCommand::Help => "Show list of commands",
         }
     }
 
